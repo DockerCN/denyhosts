@@ -1,12 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
-mkdir -p /var/run/lock/subsys/
-touch /var/log/secure
 rm -f /var/lock/subsys/denyhosts
 
 /usr/share/denyhosts/daemon-control restart
 
-while true; do
-	sleep 1000
-done
+tail -f -n 0 /var/log/denyhosts
